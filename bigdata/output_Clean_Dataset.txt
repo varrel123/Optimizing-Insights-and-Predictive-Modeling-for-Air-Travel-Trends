@@ -1,0 +1,110 @@
+
+5 baris pertama dari Clean_Dataset.csv:
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+
+|_c0| airline| flight|source_city|departure_time|stops| arrival_time|destination_city|  class|duration|days_left|price|
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+
+|  0|SpiceJet|SG-8709|      Delhi|       Evening| zero|        Night|          Mumbai|Economy|    2.17|        1| 5953|
+|  1|SpiceJet|SG-8157|      Delhi| Early_Morning| zero|      Morning|          Mumbai|Economy|    2.33|        1| 5953|
+|  2| AirAsia| I5-764|      Delhi| Early_Morning| zero|Early_Morning|          Mumbai|Economy|    2.17|        1| 5956|
+|  3| Vistara| UK-995|      Delhi|       Morning| zero|    Afternoon|          Mumbai|Economy|    2.25|        1| 5955|
+|  4| Vistara| UK-963|      Delhi|       Morning| zero|      Morning|          Mumbai|Economy|    2.33|        1| 5955|
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+
+only showing top 5 rows
+
+Skema DataFrame:
+root
+ |-- _c0: integer (nullable = true)
+ |-- airline: string (nullable = true)
+ |-- flight: string (nullable = true)
+ |-- source_city: string (nullable = true)
+ |-- departure_time: string (nullable = true)
+ |-- stops: string (nullable = true)
+ |-- arrival_time: string (nullable = true)
+ |-- destination_city: string (nullable = true)
+ |-- class: string (nullable = true)
+ |-- duration: double (nullable = true)
+ |-- days_left: integer (nullable = true)
+ |-- price: integer (nullable = true)
+
+Jumlah Baris:
+300153
+
+
+Statistik Deskriptif untuk Kolom Numerik:
+  summary                _c0  ...           days_left               price
+0   count             300153  ...              300153              300153
+1    mean           150076.0  ...  26.004750910369044  20889.660523133203
+2  stddev  86646.85201148395  ...  13.561003687093626   22697.76736607441
+3     min                  0  ...                   1                1105
+4     max             300152  ...                  49              123071
+
+[5 rows x 13 columns]
+Table untuk menghitung berapa banyak kelas ekonomi dan bisnis
++--------+------+
+|   class| count|
++--------+------+
+| Economy|206666|
+|Business| 93487|
++--------+------+
+
+Table yang menampilkan Duration yang lebih besar dari 3
++---+---------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+
+|_c0|  airline| flight|source_city|departure_time|stops| arrival_time|destination_city|  class|duration|days_left|price|
++---+---------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+
+| 18|  AirAsia| I5-747|      Delhi|       Evening|  one|Early_Morning|          Mumbai|Economy|   12.25|        1| 5949|
+| 19|  AirAsia| I5-747|      Delhi|       Evening|  one|      Morning|          Mumbai|Economy|   16.33|        1| 5949|
+| 20| GO_FIRST| G8-266|      Delhi| Early_Morning|  one|      Evening|          Mumbai|Economy|   11.75|        1| 5954|
+| 21| GO_FIRST| G8-101|      Delhi| Early_Morning|  one|        Night|          Mumbai|Economy|    14.5|        1| 5954|
+| 22| GO_FIRST| G8-103|      Delhi|       Evening|  one|      Morning|          Mumbai|Economy|   15.67|        1| 5954|
+| 23|Air_India| AI-441|      Delhi|       Evening|  one|        Night|          Mumbai|Economy|    3.75|        1| 5955|
+| 27|  AirAsia| I5-744|      Delhi|       Morning|  one|    Afternoon|          Mumbai|Economy|    5.83|        1| 8869|
+| 30| GO_FIRST| G8-165|      Delhi| Early_Morning|  one|    Afternoon|          Mumbai|Economy|     8.0|        1|10575|
+| 31|   Indigo|6E-2373|      Delhi|     Afternoon|  one|      Evening|          Mumbai|Economy|     6.0|        1|10838|
+| 32|  Vistara| UK-813|      Delhi|       Evening|  one|      Morning|          Mumbai|Economy|   14.67|        1|12150|
+| 33|  Vistara| UK-817|      Delhi|       Evening|  one|      Morning|          Mumbai|Economy|   16.17|        1|12150|
+| 34|  Vistara| UK-819|      Delhi|     Afternoon|  one|      Morning|          Mumbai|Economy|    18.0|        1|12150|
+| 35|  Vistara| UK-801|      Delhi|       Morning|  one|      Morning|          Mumbai|Economy|   23.17|        1|12150|
+| 36|  Vistara| UK-815|      Delhi|       Morning|  one|      Morning|          Mumbai|Economy|   24.17|        1|12150|
+| 37|Air_India| AI-453|      Delhi| Early_Morning|  one|    Afternoon|          Mumbai|Economy|    8.83|        1|11900|
+| 38| SpiceJet|SG-2976|      Delhi|       Evening|  one|        Night|          Mumbai|Economy|     4.5|        1|12123|
+| 39| SpiceJet|SG-2976|      Delhi|       Evening|  one|      Morning|          Mumbai|Economy|   15.25|        1|12123|
+| 40|Air_India| AI-504|      Delhi|         Night|  one|      Morning|          Mumbai|Economy|    11.0|        1|12150|
+| 41|Air_India| AI-502|      Delhi|     Afternoon|  one|      Morning|          Mumbai|Economy|   19.08|        1|12150|
+| 42|Air_India| AI-506|      Delhi|       Morning|  one|      Morning|          Mumbai|Economy|   22.83|        1|12150|
++---+---------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+
+only showing top 20 rows
+
+Table yang menampilkan 10 baris pertama dari DataFrame yang sudah di-assembly
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+-----------------+
+|_c0|airline |flight |source_city|departure_time|stops|arrival_time |destination_city|class  |duration|days_left|price|features         |
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+-----------------+
+|0  |SpiceJet|SG-8709|Delhi      |Evening       |zero |Night        |Mumbai          |Economy|2.17    |1        |5953 |[,2.171.0,5953.0]|
+|1  |SpiceJet|SG-8157|Delhi      |Early_Morning |zero |Morning      |Mumbai          |Economy|2.33    |1        |5953 |[2.33,1.0,5953.0]|
+|2  |AirAsia |I5-764 |Delhi      |Early_Morning |zero |Early_Morning|Mumbai          |Economy|2.17    |1        |5956 |[2.17,1.0,5956.0]|
+|3  |Vistara |UK-995 |Delhi      |Morning       |zero |Afternoon    |Mumbai          |Economy|2.25    |1        |5955 |[2.25,1.0,5955.0]|
+|4  |Vistara |UK-963 |Delhi      |Morning       |zero |Morning      |Mumbai          |Economy|2.33    |1        |5955 |[2.33,1.0,5955.0]|
+|5  |Vistara |UK-945 |Delhi      |Morning       |zero |Afternoon    |Mumbai          |Economy|2.33    |1        |5955 |[2.33,1.0,5955.0]|
+|6  |Vistara |UK-927 |Delhi      |Morning       |zero |Morning      |Mumbai          |Economy|2.08    |1        |6060 |[2.08,1.0,6060.0]|
+|7  |Vistara |UK-951 |Delhi      |Afternoon     |zero |Evening      |Mumbai          |Economy|2.17    |1        |6060 |[2.17,1.0,6060.0]|
+|8  |GO_FIRST|G8-334 |Delhi      |Early_Morning |zero |Morning      |Mumbai          |Economy|2.17    |1        |5954 |[2.17,1.0,5954.0]|
+|9  |GO_FIRST|G8-336 |Delhi      |Afternoon     |zero |Evening      |Mumbai          |Economy|2.25    |1        |5954 |[2.25,1.0,5954.0]|
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+-----------------+
+only showing top 10 rows
+
+Table yang menampilkan 10 baris pertama dari DataFrame yang sudah di-index
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+-----------------+-----+
+|_c0|airline |flight |source_city|departure_time|stops|arrival_time |destination_city|class  |duration|days_left|price|features         |label|
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+-----------------+-----+
+|0  |SpiceJet|SG-8709|Delhi      |Evening       |zero |Night        |Mumbai          |Economy|2.17    |1        |5953 |[2.17,1.0,5953.0]|0.0  |
+|1  |SpiceJet|SG-8157|Delhi      |Early_Morning |zero |Morning      |Mumbai          |Economy|2.33    |1        |5953 |[2.33,1.0,5953.0]|0.0  |
+|2  |AirAsia |I5-764 |Delhi      |Early_Morning |zero |Early_Morning|Mumbai          |Economy|2.17    |1        |5956 |[2.17,1.0,5956.0]|0.0  |
+|3  |Vistara |UK-995 |Delhi      |Morning       |zero |Afternoon    |Mumbai          |Economy|2.25    |1        |5955 |[2.25,1.0,5955.0]|0.0  |
+|4  |Vistara |UK-963 |Delhi      |Morning       |zero |Morning      |Mumbai          |Economy|2.33    |1        |5955 |[2.33,1.0,5955.0]|0.0  |
+|5  |Vistara |UK-945 |Delhi      |Morning       |zero |Afternoon    |Mumbai          |Economy|2.33    |1        |5955 |[2.33,1.0,5955.0]|0.0  |
+|6  |Vistara |UK-927 |Delhi      |Morning       |zero |Morning      |Mumbai          |Economy|2.08    |1        |6060 |[2.08,1.0,6060.0]|0.0  |
+|7  |Vistara |UK-951 |Delhi      |Afternoon     |zero |Evening      |Mumbai          |Economy|2.17    |1        |6060 |[2.17,1.0,6060.0]|0.0  |
+|8  |GO_FIRST|G8-334 |Delhi      |Early_Morning |zero |Morning      |Mumbai          |Economy|2.17    |1        |5954 |[2.17,1.0,5954.0]|0.0  |
+|9  |GO_FIRST|G8-336 |Delhi      |Afternoon     |zero |Evening      |Mumbai          |Economy|2.25    |1        |5954 |[2.25,1.0,5954.0]|0.0  |
++---+--------+-------+-----------+--------------+-----+-------------+----------------+-------+--------+---------+-----+-----------------+-----+
+only showing top 10 rows
+
